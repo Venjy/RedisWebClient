@@ -5,6 +5,7 @@ import {
     Body,
     ValidationPipe,
     Delete,
+    Put,
 } from '@nestjs/common';
 import { Connection } from './connection.entity';
 import { ConnectionService } from './connection.service';
@@ -21,6 +22,11 @@ export class ConnectionController {
     @Post()
     async create(@Body(new ValidationPipe()) body: Connection) {
         return this.service.create(body);
+    }
+
+    @Put()
+    async update(@Body(new ValidationPipe()) body: Connection) {
+        return this.service.update(body);
     }
 
     @Delete()
